@@ -49,14 +49,19 @@ public class GameManager : MonoBehaviour
         this.pacman.gameObject.SetActive(true);
     }
 
-    private void GameOver()
+    private void GameOver() 
+    {
+        ChangeState(false);
+    }
+    
+    private void ChangeState(bool isActive)
     {
         foreach (var ghost in ghosts)
         {
-            ghost.gameObject.SetActive(false);
+            ghost.gameObject.SetActive(isActive);
         }
 
-        this.pacman.gameObject.SetActive(false);
+        this.pacman.gameObject.SetActive(isActive);
     }
 
     private void SetScore(int score)
