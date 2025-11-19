@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour
 
     private void ResetState()
     {
-        for (int i = 0; i < this.ghosts.Length; i++)
+        foreach (var ghost in ghosts)
         {
-            this.ghosts[i].gameObject.SetActive(true);
+            ghost.gameObject.SetActive(true);
         }
 
         this.pacman.gameObject.SetActive(true);
