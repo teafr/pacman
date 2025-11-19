@@ -7158,7 +7158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   ghosts: []
   pacman: {fileID: 0}
-  pellets: {fileID: 0}
+  pellets: {fileID: 2106923824}
 --- !u!1 &2106923823
 GameObject:
   m_ObjectHideFlags: 0
