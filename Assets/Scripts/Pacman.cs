@@ -28,8 +28,6 @@ public class Pacman : MonoBehaviour, @PlayerController.IGameplayActions
 
     private void Update()
     {
-        private void Update()
-    {
         UpdateRotation();
     }
 
@@ -42,7 +40,6 @@ public class Pacman : MonoBehaviour, @PlayerController.IGameplayActions
 
             lastDirection = movement.direction;
         }
-    }
     }
 
     public void OnMove(InputAction.CallbackContext context)
