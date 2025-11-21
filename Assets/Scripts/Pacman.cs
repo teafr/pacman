@@ -33,13 +33,6 @@ public class Pacman : MonoBehaviour, @PlayerController.IGameplayActions
 
     private void UpdateRotation()
     {
-        private void Update()
-    {
-        UpdateRotation();
-    }
-
-    private void UpdateRotation()
-    {
         if (movement.direction != lastDirection)
         {
             float angle = Mathf.Atan2(this.movement.direction.y, this.movement.direction.x);
