@@ -48,7 +48,6 @@ public class Pacman : MonoBehaviour, @PlayerController.IGameplayActions
             lastDirection = movement.direction;
         }
     }
-    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
