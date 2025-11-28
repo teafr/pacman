@@ -24,11 +24,6 @@ public class Ghost : MonoBehaviour
         Frightened = GetComponent<GhostFrightened>();
     }
 
-    public void ChangeState(bool enabled)
-    {
-        this.gameObject.SetActive(enabled);
-    }
-
     public void Start()
     {
         ResetState();
@@ -36,21 +31,30 @@ public class Ghost : MonoBehaviour
 
     public void ResetState()
     {
-        this.gameObject.SetActive(true);
+        gameObject.SetActive(true);
         Movement.ResetState();
+        ResetBehaviorStates();
+    }
 
+    private void ResetBehaviorStates()
+    {
+        DisableNonInitialBehaviors();
+
+        if (initialBehavior != null)
+        {
+            initialBehavior.Enable();
+        }
+    }
+
+    private void DisableNonInitialBehaviors()
+    {
         Scatter.Disable();
         Chase.Disable();
         Frightened.Disable();
 
-        if (initialBehavior != null)
+        if (Home != initialBehavior)
         {
-            if (this.Home != this.initialBehavior)
-            {
-                Home.Disable();
-            }
-
-            initialBehavior.Enable();
+            Home.Disable();
         }
     }
 
