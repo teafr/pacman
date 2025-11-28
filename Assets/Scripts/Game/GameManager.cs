@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private const int InitialLives = 3;
+    private const int InitialGhostMultiplier = 1;
+    private const float ResetStateDelay = 3.0f;
+
     public Ghost[] ghosts;
     public Pacman pacman;
     public Transform pellets;
 
-    public int ghostMultiplier { get; private set; } = 1;
-    public int score { get; private set; }
-    public int lives { get; private set; }
+    public int GhostMultiplier { get; private set; } = InitialGhostMultiplier;
+    public int Score { get; private set; }
+    public int Lives { get; private set; }
 
     private void Start()
     {
@@ -17,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (this.lives <= 0 && Input.anyKeyDown)
+        if (this.Lives <= 0 && Input.anyKeyDown)
         {
             NewGame();
         }
@@ -26,7 +30,7 @@ public class GameManager : MonoBehaviour
     private void NewGame()
     {
         SetScore(0);
-        SetLives(3);
+        SetLives(InitialLives);
         NewRound();
     }
 
@@ -69,30 +73,30 @@ public class GameManager : MonoBehaviour
 
     private void SetScore(int score)
     {
-        this.score = score;
+        this.Score = score;
     }
 
     private void SetLives(int lives)
     {
-        this.lives = lives;
+        this.Lives = lives;
     }
 
     private void GhostEaten(Ghost ghost)
     {
-        int points = ghost.points * this.ghostMultiplier;
-        SetScore(this.score + points);
-        this.ghostMultiplier++;
+        int points = ghost.points * this.GhostMultiplier;
+        SetScore(this.Score + points);
+        this.GhostMultiplier++;
     }
 
     public void PacmanEaten()
     {
         this.pacman.gameObject.SetActive(false);
 
-        SetLives(this.lives - 1);
+        SetLives(this.Lives - 1);
 
-        if (this.lives > 0)
+        if (this.Lives > 0)
         {
-            Invoke(nameof(ResetState), 3.0f);
+            Invoke(nameof(ResetState), ResetStateDelay);
         }
         else
         {
@@ -104,12 +108,12 @@ public class GameManager : MonoBehaviour
     {
         pellet.gameObject.SetActive(false);
 
-        SetScore(this.score + pellet.points);
+        SetScore(this.Score + pellet.points);
 
         if (!HasRemainingPellets())
         {
             this.pacman.gameObject.SetActive(false);
-            Invoke(nameof(NewRound), 3.0f);
+            Invoke(nameof(NewRound), ResetStateDelay);
         }
     }
 
@@ -137,7 +141,6 @@ public class GameManager : MonoBehaviour
 
     private void ResetGhostMultiplier()
     {
-        this.ghostMultiplier = 1;
+        this.GhostMultiplier = InitialGhostMultiplier;
     }
-
 }

@@ -11,5 +11,4 @@ public class Passage : MonoBehaviour
         position.y = this.connection.position.y;
         other.transform.position = position;
     }
-
 }
