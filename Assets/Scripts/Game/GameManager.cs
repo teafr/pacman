@@ -50,10 +50,10 @@ public class GameManager : MonoBehaviour
 
         foreach (var ghost in ghosts)
         {
-            ghost.gameObject.SetActive(true);
+            ghost.ResetState();
         }
 
-        this.pacman.gameObject.SetActive(true);
+        this.pacman.ResetState();
     }
 
     private void GameOver() 
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         this.Lives = lives;
     }
 
-    private void GhostEaten(Ghost ghost)
+    public void GhostEaten(Ghost ghost)
     {
         int points = ghost.points * this.GhostMultiplier;
         SetScore(this.Score + points);

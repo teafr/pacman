@@ -121,10 +121,10 @@ GameObject:
   - component: {fileID: 1290496116412618398}
   - component: {fileID: 9079744300244746400}
   - component: {fileID: 8701953166897213749}
-  - component: {fileID: 3219077825017244187}
-  - component: {fileID: 3411843671569486253}
   - component: {fileID: 6251824252727358585}
   - component: {fileID: 2318762020577166676}
+  - component: {fileID: 3219077825017244187}
+  - component: {fileID: 3411843671569486253}
   m_Layer: 7
   m_Name: Ghost_Base
   m_TagString: Untagged
@@ -191,6 +191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ghost
   points: 200
+  initialBehavior: {fileID: 0}
+  target: {fileID: 0}
 --- !u!114 &9079744300244746400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,30 +247,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &3219077825017244187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6420048982373788861}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f284bb8527d764c8ed5b85eef7c540, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GhostChase
---- !u!114 &3411843671569486253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6420048982373788861}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 812bdc7dc1424ca47935fb377c866d72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GhostFrightened
 --- !u!114 &6251824252727358585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ef180feffea464bb350a28e2a99e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostHome
+  duration: 0
 --- !u!114 &2318762020577166676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +272,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea62ca1e0abef641b4418bf42d6c394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostScatter
+  duration: 7
+--- !u!114 &3219077825017244187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420048982373788861}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f284bb8527d764c8ed5b85eef7c540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostChase
+  duration: 20
+--- !u!114 &3411843671569486253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420048982373788861}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812bdc7dc1424ca47935fb377c866d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostFrightened
+  duration: 8
 --- !u!1 &7931882183976734590
 GameObject:
   m_ObjectHideFlags: 0

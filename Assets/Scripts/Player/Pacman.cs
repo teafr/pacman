@@ -63,4 +63,10 @@ public class Pacman : MonoBehaviour, @PlayerController.IGameplayActions
             movement.SetDirection(Vector2.right);
         }
     }
+
+    public void ResetState()
+    {
+        this.movement.ResetState();
+        this.gameObject.SetActive(true);
+    }
 }
