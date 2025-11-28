@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PowerPellet : Pellet
 {
     public float duration = 8.0f;
@@ -8,5 +6,4 @@ public class PowerPellet : Pellet
     {
         manager.PowerPelletEaten(this);
     }
-
 }
