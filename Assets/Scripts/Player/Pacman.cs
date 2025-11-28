@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Movement))]
-public class Pacman : MonoBehaviour, @PlayerController.IGameplayActions
+public class Pacman : MonoBehaviour
 {
     private Movement movement;
     private PlayerController input;
@@ -13,16 +13,17 @@ public class Pacman : MonoBehaviour, @PlayerController.IGameplayActions
     {
         movement = GetComponent<Movement>();
         input = new PlayerController();
-        input.Gameplay.SetCallbacks(this);
     }
 
     private void OnEnable()
     {
         input.Enable();
+        input.Gameplay.Move.performed += OnMove;
     }
 
     private void OnDisable()
     {
+        input.Gameplay.Move.performed -= OnMove;
         input.Disable();
     }
 
@@ -62,5 +63,11 @@ public class Pacman : MonoBehaviour, @PlayerController.IGameplayActions
         {
             movement.SetDirection(Vector2.right);
         }
+    }
+
+    public void ResetState()
+    {
+        this.movement.ResetState();
+        this.gameObject.SetActive(true);
     }
 }

@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1290496116412618398, guid: b4b3e134cb5c15f4ba59d32099b65774, type: 3}
+      propertyPath: initialBehavior
+      value: 
+      objectReference: {fileID: 3776993326153950239}
     - target: {fileID: 4330052699199111742, guid: b4b3e134cb5c15f4ba59d32099b65774, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -77,3 +81,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4b3e134cb5c15f4ba59d32099b65774, type: 3}
+--- !u!114 &3776993326153950239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6251824252727358585, guid: b4b3e134cb5c15f4ba59d32099b65774, type: 3}
+  m_PrefabInstance: {fileID: 7109040193198428262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ef180feffea464bb350a28e2a99e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostHome
