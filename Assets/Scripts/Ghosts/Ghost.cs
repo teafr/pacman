@@ -24,6 +24,16 @@ public class Ghost : MonoBehaviour
         Frightened = GetComponent<GhostFrightened>();
     }
 
+    public void ChangeState(bool enabled)
+    {
+        this.gameObject.SetActive(enabled);
+    }
+
+    public void Start()
+    {
+        ResetState();
+    }
+
     public void ResetState()
     {
         this.gameObject.SetActive(true);

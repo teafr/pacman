@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     private const int InitialLives = 3;
     private const int InitialGhostMultiplier = 1;
     private const float ResetStateDelay = 3.0f;
+
+    private PlayerController input;
 
     public Ghost[] ghosts;
     public Pacman pacman;
@@ -14,14 +17,35 @@ public class GameManager : MonoBehaviour
     public int Score { get; private set; }
     public int Lives { get; private set; }
 
+    private void Awake()
+    {
+        input = new PlayerController();
+        input.Gameplay.Restart.Disable();
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+    }
+    private void OnDisable()
+    {
+        input.Disable();
+    }
+
     private void Start()
     {
         NewGame();
+        input.Gameplay.Restart.performed += OnRestart;
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        if (this.Lives <= 0 && Input.anyKeyDown)
+        input.Gameplay.Restart.performed -= OnRestart;
+    }
+
+    private void OnRestart(InputAction.CallbackContext ctx)
+    {
+        if (this.Lives <= 0)
         {
             NewGame();
         }
@@ -29,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     private void NewGame()
     {
+        input.Gameplay.Restart.Disable();
         SetScore(0);
         SetLives(InitialLives);
         NewRound();
@@ -59,6 +84,7 @@ public class GameManager : MonoBehaviour
     private void GameOver() 
     {
         ChangeState(false);
+        input.Gameplay.Restart.Enable();
     }
     
     private void ChangeState(bool isActive)
