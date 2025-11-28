@@ -3,8 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Movement : MonoBehaviour
 {
+    private const float BaseSpeedMultiplier = 1.0f;
     public float speed = 8.0f;
-    public float speedMultiplier = 1.0f;
+    public float speedMultiplier = BaseSpeedMultiplier;
     public Vector2 initialDirection;
     public LayerMask obstacleLayer;
 
@@ -26,7 +27,7 @@ public class Movement : MonoBehaviour
 
     public void ResetState()
     {
-        this.speedMultiplier = 1.0f;
+        this.speedMultiplier = BaseSpeedMultiplier;
         this.Direction = this.initialDirection;
         this.NextDirection = Vector2.zero;
         this.transform.position = this.StartingPosition;

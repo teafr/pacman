@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private const int InitialLives = 3;
+    private const int InitialGhostMultiplier = 1;
+    private const float ResetStateDelay = 3.0f;
+
     public Ghost[] ghosts;
     public Pacman pacman;
     public Transform pellets;
 
-    public int GhostMultiplier { get; private set; } = 1;
+    public int GhostMultiplier { get; private set; } = InitialGhostMultiplier;
     public int Score { get; private set; }
     public int Lives { get; private set; }
 
@@ -26,7 +30,7 @@ public class GameManager : MonoBehaviour
     private void NewGame()
     {
         SetScore(0);
-        SetLives(3);
+        SetLives(InitialLives);
         NewRound();
     }
 
@@ -92,7 +96,7 @@ public class GameManager : MonoBehaviour
 
         if (this.Lives > 0)
         {
-            Invoke(nameof(ResetState), 3.0f);
+            Invoke(nameof(ResetState), ResetStateDelay);
         }
         else
         {
@@ -109,7 +113,7 @@ public class GameManager : MonoBehaviour
         if (!HasRemainingPellets())
         {
             this.pacman.gameObject.SetActive(false);
-            Invoke(nameof(NewRound), 3.0f);
+            Invoke(nameof(NewRound), ResetStateDelay);
         }
     }
 
@@ -137,6 +141,6 @@ public class GameManager : MonoBehaviour
 
     private void ResetGhostMultiplier()
     {
-        this.GhostMultiplier = 1;
+        this.GhostMultiplier = InitialGhostMultiplier;
     }
 }
