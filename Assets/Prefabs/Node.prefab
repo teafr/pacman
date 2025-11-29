@@ -91,6 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6533dbb49368a8141a5beb602ff909ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Node
-  obsticleLayer:
+  obstacleLayer:
     serializedVersion: 2
     m_Bits: 512
