@@ -3,6 +3,7 @@ using UnityEngine;
 public class GhostFrightened : GhostBehavior
 {
     private const string PacmanLayerName = "Pacman";
+
     private const float FlashDurationThreshold = 2.0f;
     private const float InitialSpeedMultiplier = 0.5f;
     private const float NormalSpeedMultiplier = 1.0f;
@@ -17,23 +18,14 @@ public class GhostFrightened : GhostBehavior
     public override void Enable(float duration)
     {
         base.Enable(duration);
-
-        body.enabled = false;
-        eyes.enabled = false;
-        blue.enabled = true;
-        white.enabled = false;
-
+        KeepOnlyBlue();
         Invoke(nameof(Flash), duration / FlashDurationThreshold);
     }
 
     public override void Disable()
     {
         base.Disable();
-
-        body.enabled = true;
-        eyes.enabled = true;
-        blue.enabled = false;
-        white.enabled = false;
+        ReturnInitialState();
     }
 
     public void Flash()
@@ -65,15 +57,16 @@ public class GhostFrightened : GhostBehavior
     private void Eaten()
     {
         IsEaten = true;
+        Ghost.transform.position = GetHomePosition();
+        Ghost.Home.Enable(duration);
+        KeepOnlyEyes();
+    }
+
+    private Vector3 GetHomePosition()
+    {
         Vector3 position = Ghost.Home.inside.position;
         position.z = Ghost.transform.position.z;
-        Ghost.transform.position = position;
-        Ghost.Home.Enable(duration);
-
-        body.enabled = false;
-        eyes.enabled = true;
-        blue.enabled = false;
-        white.enabled = false;
+        return position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -112,5 +105,29 @@ public class GhostFrightened : GhostBehavior
         }
 
         return direction;
+    }
+
+    private void KeepOnlyEyes()
+    {
+        body.enabled = false;
+        eyes.enabled = true;
+        blue.enabled = false;
+        white.enabled = false;
+    }
+
+    private void KeepOnlyBlue()
+    {
+        body.enabled = false;
+        eyes.enabled = false;
+        blue.enabled = true;
+        white.enabled = false;
+    }
+
+    private void ReturnInitialState()
+    {
+        body.enabled = true;
+        eyes.enabled = true;
+        blue.enabled = false;
+        white.enabled = false;
     }
 }
