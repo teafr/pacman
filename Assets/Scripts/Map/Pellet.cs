@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Pellet : MonoBehaviour
 {
+    private const string PacmanLayerName = "Pacman";
+
     public int points = 10;
     protected GameManager manager;
 
@@ -17,7 +19,7 @@ public class Pellet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Pacman"))
+        if (other.gameObject.layer == LayerMask.NameToLayer(PacmanLayerName))
         {
             Eat();
         }    

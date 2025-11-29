@@ -8,7 +8,6 @@ public abstract class GhostBehavior : MonoBehaviour
     private void Awake()
     {
         Ghost = GetComponent<Ghost>();
-        this.enabled = false;
     }
 
     public void Enable()
@@ -29,7 +28,7 @@ public abstract class GhostBehavior : MonoBehaviour
 
     private void SetEnabledAndCancelInvoke(bool isEnabled)
     {
-        this.enabled = isEnabled;
+        enabled = isEnabled;
         CancelInvoke();
     }
 }

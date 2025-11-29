@@ -14,7 +14,7 @@ public abstract class MovingBehavior : GhostBehavior
 
     protected bool IsReadyToChangeDirection()
     {
-        return this.enabled && !Ghost.Frightened.enabled;
+        return enabled && !Ghost.Frightened.enabled;
     }
 
     protected abstract void SetNewDirection(Node node);
