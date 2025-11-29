@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GhostHome : GhostBehavior
 {
+    private const string LayerName = "Obstacle";
     public Transform inside;
     public Transform outside;
 
@@ -16,6 +17,14 @@ public class GhostHome : GhostBehavior
         if (gameObject.activeInHierarchy)
         {
             StartCoroutine(ExitTransition());
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (enabled && collision.gameObject.layer == LayerMask.NameToLayer(LayerName))
+        {
+            Ghost.Movement.SetDirection(-Ghost.Movement.Direction);
         }
     }
 
