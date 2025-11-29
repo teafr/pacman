@@ -7677,10 +7677,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1316575417795799434, guid: 103b95b370ec1eb47954b86a8a9fa324, type: 3}
+      propertyPath: duration
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217171389460039365, guid: 103b95b370ec1eb47954b86a8a9fa324, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2558129221219793472, guid: 103b95b370ec1eb47954b86a8a9fa324, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1820069765}
+    - target: {fileID: 2558129221219793472, guid: 103b95b370ec1eb47954b86a8a9fa324, type: 3}
+      propertyPath: initialBehavior
+      value: 
+      objectReference: {fileID: 1710621939}
     - target: {fileID: 7261091322163608165, guid: 103b95b370ec1eb47954b86a8a9fa324, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7741,6 +7753,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea8b071741dadf4292f3e1b1c11c239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ghost
+--- !u!114 &1710621939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1316575417795799434, guid: 103b95b370ec1eb47954b86a8a9fa324, type: 3}
+  m_PrefabInstance: {fileID: 1632211794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea62ca1e0abef641b4418bf42d6c394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostScatter
 --- !u!1 &1820069760
 GameObject:
   m_ObjectHideFlags: 0
