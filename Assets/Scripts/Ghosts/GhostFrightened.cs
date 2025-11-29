@@ -83,4 +83,34 @@ public class GhostFrightened : GhostBehavior
             Eaten();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Node node = other.GetComponent<Node>();
+
+        if (node != null && enabled)
+        {
+            Ghost.Movement.SetDirection(FindFurthestDirection(node));
+        }
+    }
+
+    private Vector2 FindFurthestDirection(Node node)
+    {
+        Vector2 direction = Vector2.zero;
+        float maxDistance = float.MinValue;
+
+        foreach (Vector2 availableDirection in node.AvailableDirections)
+        {
+            Vector3 newPosition = transform.position + new Vector3(availableDirection.x, availableDirection.y);
+            float distance = (Ghost.target.position - newPosition).sqrMagnitude;
+
+            if (distance > maxDistance)
+            {
+                direction = availableDirection;
+                maxDistance = distance;
+            }
+        }
+
+        return direction;
+    }
 }
