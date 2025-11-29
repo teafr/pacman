@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    public LayerMask obsticleLayer;
+    public LayerMask obstacleLayer;
     public List<Vector2> AvailableDirections { get; private set; }
 
     private void Start()
