@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class GhostHome : GhostBehavior
 {
-    private const string LayerName = "Obstacle";
+    private const string ObstacleLayerName = "Obstacle";
+
     public Transform inside;
     public Transform outside;
 
@@ -22,7 +23,7 @@ public class GhostHome : GhostBehavior
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (enabled && collision.gameObject.layer == LayerMask.NameToLayer(LayerName))
+        if (enabled && collision.gameObject.layer == LayerMask.NameToLayer(ObstacleLayerName))
         {
             Ghost.Movement.SetDirection(-Ghost.Movement.Direction);
         }
@@ -31,7 +32,13 @@ public class GhostHome : GhostBehavior
     private IEnumerator ExitTransition()
     {
         SwitchState(Vector2.up, false);
+        yield return InterpolateExitMovement();
+        SwitchState(GetRandomDirection(), true);
+        Ghost.Scatter.Enable();
+    }
 
+    private IEnumerator InterpolateExitMovement()
+    {
         Vector3 position = Ghost.transform.position;
 
         float duration = 0.5f, elapsed = 0f;
@@ -55,9 +62,6 @@ public class GhostHome : GhostBehavior
             elapsed += Time.deltaTime;
             yield return null;
         }
-
-        SwitchState(GetRandomDirection(), true);
-        Ghost.Scatter.Enable();
     }
 
     private void SwitchState(Vector2 direction, bool isEnabled)

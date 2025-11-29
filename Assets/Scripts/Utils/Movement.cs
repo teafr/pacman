@@ -4,6 +4,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private const float BaseSpeedMultiplier = 1.0f;
+
     public float speed = 8.0f;
     public float speedMultiplier = BaseSpeedMultiplier;
     public Vector2 initialDirection;
