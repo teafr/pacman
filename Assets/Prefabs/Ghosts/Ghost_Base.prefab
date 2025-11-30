@@ -260,6 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostHome
   duration: 0
+  inside: {fileID: 0}
+  outside: {fileID: 0}
 --- !u!114 &2318762020577166676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostFrightened
   duration: 8
+  body: {fileID: 6900580780636075267}
+  eyes: {fileID: 4330052699199111742}
+  blue: {fileID: 8023209194962759783}
+  white: {fileID: 7873308728773408299}
 --- !u!1 &7931882183976734590
 GameObject:
   m_ObjectHideFlags: 0
