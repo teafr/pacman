@@ -15,9 +15,8 @@ public class GameManager : MonoBehaviour
     public Transform pellets;
 
     [Header("UI References")]
-    public ScoreDisplay scoreDisplay;   // ссылка на UI для счёта
-    public GameOverUI gameOverUI;       // ссылка на UI для Game Over
-
+    public ScoreDisplay scoreDisplay; 
+    public GameOverUI gameOverUI;       
     public int GhostMultiplier { get; private set; } = InitialGhostMultiplier;
     public int Score { get; private set; }
     public int Lives { get; private set; }
@@ -94,7 +93,7 @@ public class GameManager : MonoBehaviour
 
         if (gameOverUI != null)
         {
-            gameOverUI.Show(); // показать экран Game Over
+            gameOverUI.Show(); 
         }
     }
 
@@ -115,7 +114,7 @@ public class GameManager : MonoBehaviour
 
         if (scoreDisplay != null)
         {
-            scoreDisplay.SetScore(score); // обновляем UI
+            scoreDisplay.SetScore(score); 
         }
     }
 
@@ -200,7 +199,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Выход из игры...");
 
-        Application.Quit(); // работает в билде
+        Application.Quit(); 
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false; // работает в редакторе

@@ -9,7 +9,7 @@ public class GameOverUI : MonoBehaviour
     public void Show()
     {
         gameOverPanel.SetActive(true);
-        Time.timeScale = 0; // Останавливаем игру
+        Time.timeScale = 0;
     }
 
     public void TryAgain()

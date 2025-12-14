@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class ScoreDisplay : MonoBehaviour
 {
     [Header("UI Digits")]
-    public Image[] digits;         // Слоты для цифр (например, 6 Image объектов)
-    public Sprite[] digitSprites;  // Спрайты цифр от 0 до 9
+    public Image[] digits;         
+    public Sprite[] digitSprites;  
 
     public void SetScore(int score)
     {
@@ -27,7 +27,7 @@ public class ScoreDisplay : MonoBehaviour
             }
         }
 
-        // Отключаем лишние ведущие нули
+  
         for (; digitIndex >= 0; digitIndex--)
         {
             digits[digitIndex].enabled = false;
