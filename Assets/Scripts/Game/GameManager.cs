@@ -9,10 +9,14 @@ public class GameManager : MonoBehaviour
 
     private PlayerController input;
 
+    [Header("Game References")]
     public Ghost[] ghosts;
     public Pacman pacman;
     public Transform pellets;
 
+    [Header("UI References")]
+    public ScoreDisplay scoreDisplay; 
+    public GameOverUI gameOverUI;       
     public int GhostMultiplier { get; private set; } = InitialGhostMultiplier;
     public int Score { get; private set; }
     public int Lives { get; private set; }
@@ -27,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         input.Enable();
     }
+
     private void OnDisable()
     {
         input.Disable();
@@ -81,12 +86,18 @@ public class GameManager : MonoBehaviour
         this.pacman.ResetState();
     }
 
-    private void GameOver() 
+    private void GameOver()
     {
         ChangeState(false);
         input.Gameplay.Restart.Enable();
+
+        if (gameOverUI != null)
+        {
+            gameOverUI.Show(); 
+        }
     }
-    
+
+
     private void ChangeState(bool isActive)
     {
         foreach (var ghost in ghosts)
@@ -100,11 +111,21 @@ public class GameManager : MonoBehaviour
     private void SetScore(int score)
     {
         this.Score = score;
+
+        if (scoreDisplay != null)
+        {
+            scoreDisplay.SetScore(score); 
+        }
     }
 
     private void SetLives(int lives)
     {
         this.Lives = lives;
+
+        if (livesDisplay != null)
+        {
+            livesDisplay.SetLives(lives);
+        }
     }
 
     public void GhostEaten(Ghost ghost)
@@ -113,6 +134,7 @@ public class GameManager : MonoBehaviour
         SetScore(this.Score + points);
         this.GhostMultiplier++;
     }
+    public LivesDisplay livesDisplay;
 
     public void PacmanEaten()
     {
@@ -172,4 +194,16 @@ public class GameManager : MonoBehaviour
     {
         this.GhostMultiplier = InitialGhostMultiplier;
     }
+
+    public void ExitGame()
+    {
+        Debug.Log("Выход из игры...");
+
+        Application.Quit(); 
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // работает в редакторе
+#endif
+    }
 }
+
